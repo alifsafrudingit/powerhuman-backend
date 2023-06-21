@@ -40,7 +40,7 @@ class CompanyController extends Controller
 
         // powerhuman.com/api/company?name=Kunde
         if ($name) {
-            $companies->where('name', 'like', '%' . $name . "%");
+            $companies->where('name', 'like', '%' . $name . '%');
         }
 
         return ResponseFormatter::success(
@@ -99,7 +99,7 @@ class CompanyController extends Controller
             // Create company
             $company->update([
                 'name' => $request->name,
-                'logo' => $path,
+                'logo' => isset($path) ? $path : $company->logo,
             ]);
 
             return ResponseFormatter::success($company, 'Company updated');

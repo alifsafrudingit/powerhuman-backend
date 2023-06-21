@@ -19,7 +19,7 @@ class Team extends Model
         return $this->hasMany(Employee::class);
     }
 
-    public function company()
+    public function companies()
     {
         return $this->belongsTo(Company::class);
     }
